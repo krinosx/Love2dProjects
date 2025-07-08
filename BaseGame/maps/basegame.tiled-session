@@ -1,0 +1,178 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+        ".",
+        "tilesets"
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/desert.tmx": {
+            "scale": 0.938125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 574.0173217854764,
+                "y": 639.5736175882745
+            }
+        },
+        "F:/Tiled/examples/desert.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/hexagonal-mini.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 112.75,
+                "y": 91
+            }
+        },
+        "F:/Tiled/examples/hexagonal-mini.tmx#hex mini": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/isometric_grass_and_water.tmx": {
+            "scale": 1.01234375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 739.373360086433,
+                "y": 399.07393116221624
+            }
+        },
+        "F:/Tiled/examples/isometric_grass_and_water.tmx#isometric_grass_and_water": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/orthogonal-outside.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 329.25,
+                "y": 247.5
+            }
+        },
+        "F:/Tiled/examples/orthogonal-outside.tmx#outdoor": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/perspective_walls.tmx": {
+            "scale": 1.21,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 445.0413223140496,
+                "y": 495.8677685950413
+            }
+        },
+        "F:/Tiled/examples/perspective_walls.tsx": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/sewer_automap/rule_003.tmx": {
+            "scale": 8.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 96.09843937575029,
+                "y": 72.02881152460984
+            }
+        },
+        "F:/Tiled/examples/sewer_automap/rule_003.tmx#rules_sewers": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/sewer_automap/rule_003.tmx#sewer_tileset": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/sewer_automap/sewers.tmx": {
+            "scale": 1.61,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 333.8509316770186,
+                "y": 372.0496894409938
+            }
+        },
+        "F:/Tiled/examples/sewer_automap/sewers.tmx#rules_sewers": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/sewer_automap/sewers.tmx#sewer_tileset": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/sewers.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 538.5,
+                "y": 413
+            }
+        },
+        "F:/Tiled/examples/sewers.tmx#rules_sewers": {
+            "scaleInDock": 1
+        },
+        "F:/Tiled/examples/sewers.tmx#sewer_tileset": {
+            "scaleInDock": 1
+        },
+        "MainCity.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1124.5,
+                "y": 245
+            }
+        },
+        "MainCity.tmx#MagicalCity": {
+            "scaleInDock": 1
+        },
+        "city_street.tmx": {
+            "scale": 1.0545247395833333,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 801.7829912023461,
+                "y": 253.19462880074082
+            }
+        },
+        "city_street.tmx#MagicCity": {
+            "scaleInDock": 1
+        },
+        "forest_corner.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 637.5,
+                "y": 306
+            }
+        },
+        "forest_corner.tmx#MagicCity": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "F:/GameProject/lovegames/BaseGame/maps",
+    "last.imagePath": "F:/Tiled/examples",
+    "map.height": 27,
+    "map.lastUsedExportFilter": "Lua files (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 48,
+    "openFiles": [
+    ],
+    "project": "basegame.tiled-project",
+    "recentFiles": [
+        "MainCity.tmx",
+        "city_street.tmx",
+        "forest_corner.tmx",
+        "F:/Tiled/examples/desert.tmx",
+        "F:/Tiled/examples/isometric_grass_and_water.tmx",
+        "F:/Tiled/examples/orthogonal-outside.tmx",
+        "F:/Tiled/examples/perspective_walls.tmx",
+        "F:/Tiled/examples/sewers.tmx",
+        "F:/Tiled/examples/hexagonal-mini.tmx",
+        "F:/Tiled/examples/sewer_automap/sewers.tmx",
+        "F:/Tiled/examples/sewer_automap/rule_003.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.transparentColor": "#ffffff",
+    "tileset.useTransparentColor": true
+}
