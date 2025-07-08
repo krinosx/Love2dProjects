@@ -10,6 +10,11 @@ local printPhysics = false
 
 -- Central gravity point
 local sun = {    
+    x = 0, y = 0,
+    mass = 1000,
+    getPosition = function (self)
+        return self.x, self.y
+    end,
 }
 
 local planet_1 = {    
@@ -19,6 +24,17 @@ local planet_1 = {
 local theta = 0
 
 
+Body = {
+    x = 500,
+    y = 500,
+    mass = 1000,
+    getPosition = function (self)
+        return self.x, self.y
+    end,
+
+}
+ 
+
   
 function love.load()
       -- Initialize game
@@ -27,6 +43,10 @@ function love.load()
             x = love.graphics.getWidth() / 2,
             y = love.graphics.getHeight() / 2,
             texture = love.graphics.newImage("Assets/Planets/Suns/Red/Sun_Red_01_256x256.png"),
+            mass = 1000,
+            getPosition = function (self)
+                  return self.x, self.y
+            end
       }
       sun.w, sun.h = sun.texture:getDimensions()
       sun.body = love.physics.newBody(world,sun.x,sun.y,"dynamic")
@@ -98,20 +118,10 @@ function love.update(dt)
    
 
 end
-
-Body = {
-    x = 500,
-    y = 500,
-    mass = 1000,
-    getPosition = function (self)
-        return self.x, self.y
-    end,
-
-}
-  
+ 
 function love.draw()
       -- Draw game
-      
+      gravity.drawFieldGrid(40, 24, 50, sun)
       if printPhysics then
             --Draw physics
             local sun_body_x, sun_body_y = sun.body:getPosition()
@@ -130,7 +140,7 @@ function love.draw()
       end
       
       
-      gravity.drawFieldGrid(10, 10, 50, Body)
+
 
 
 end
