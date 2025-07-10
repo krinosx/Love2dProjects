@@ -8,10 +8,12 @@ Gravity.localInfluence = function (self, x, y, x1, y1, mass)
     -- on our case we will consider m2 as a point without mass
 
     local distance = self.distance(x,y,x1,y1);
-
     local Force = self.G * mass / (distance^2)
 
-    return Force
+   local angle = math.atan2(y-y1, x-x1)
+
+  
+    return Force, angle
 end
 
 Gravity.distance = function(x, y, x1, y1) 
@@ -43,9 +45,22 @@ Gravity.drawFieldGrid = function (gridW, gridH, cellSize, body)
   for i = 0,gridW, 1 do
     for j=0, gridH, 1 do
        local loc_x, loc_y = gridStartPx_X + cellSize * i, gridStartPx_Y + cellSize * j
-       love.graphics.rectangle("line",loc_x,loc_y, cellSize, cellSize)
+      -- love.graphics.rectangle("line",loc_x,loc_y, cellSize, cellSize)
+
+
+      local force, angle =  Gravity:localInfluence(loc_x, loc_y, bodyX, bodyY, 1000)
+
+       love.graphics.push()
+       love.graphics.translate(loc_x, loc_y);
+       love.graphics.rotate(angle)
+       love.graphics.line(0,0,30,0)
+       love.graphics.pop()
        
-       love.graphics.print(string.format("%.2f", Gravity:localInfluence(loc_x, loc_y, bodyX, bodyY, 1000)), loc_x, loc_y )
+
+
+      love.graphics.print(string.format("%.3f",force), loc_x, loc_y )
+
+      love.graphics.print(string.format("%.3f",angle), loc_x, loc_y +20 )
     end
   end
 
