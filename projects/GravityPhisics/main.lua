@@ -22,7 +22,7 @@ function love.load()
       local sun_y = love.graphics.getHeight() / 2
       local sun_texture = love.graphics.newImage("Assets/Planets/Suns/Red/Sun_Red_01_256x256.png")
       local sun_w = sun_texture:getWidth()
-      local sun_body = love.physics.newBody(world, sun_x, sun_y, "dynamic")
+      local sun_body = love.physics.newBody(world, sun_x, sun_y, "kinematic")
       local sun_shape = love.physics.newCircleShape(sun_x, sun_y, sun_w / 2)
 
       sun:init(sun_x, sun_y, 1000,
@@ -32,13 +32,14 @@ function love.load()
       )
 
 
-      local p1_x = 200
-      local p1_y = 200
+      local p1_x = 400
+      local p1_y = 400
       local p1_texture = love.graphics.newImage("Assets/Planets/Solid/Ocean/Ocean_01-128x128.png")
-      local p1_body = love.physics.newBody(world, p1_x, p1_y, "dynamic")
-      local p1_shape = love.physics.newCircleShape(p1_x, p1_y, p1_texture:getWidth() / 2)
+      local p1_body = love.physics.newBody(world, p1_x, p1_y, "kinematic")
+      local p1_w = p1_texture:getWidth()
+      local p1_shape = love.physics.newCircleShape(p1_x, p1_y, p1_w / 2)
 
-      planet_1:init(200, 200, 100,
+      planet_1:init(p1_x, p1_y, 1000,
             p1_texture,
             p1_body,
             p1_shape)
@@ -81,14 +82,15 @@ function love.update(dt)
       -- Set positions back to the texture
       sun.x, sun.y = sun.p_body:getPosition()
 
-      theta = theta + (math.pi / 8 * dt)
-      local p1_x, p1_y = GetElipticalOrbitCoordinate(sun.x, sun.y, theta, 500, 400)
+      theta = theta + (math.pi / 20 * dt)
+      local p1_x, p1_y = GetElipticalOrbitCoordinate(sun.x, sun.y, theta, 600, 400)
       planet_1:updatePosition(p1_x, p1_y)
 end
 
 function love.draw()
       -- Draw game
-      gravity.drawFieldGrid(40, 24, 50, sun)
+      gravity.drawFieldGrid(40, 24, 50, sun, planet_1)
+      love.graphics.print(string.format("sun %d,%d", sun.x,sun.y), 100, 10)
       if printPhysics then
             --Draw physics
             local sun_body_x, sun_body_y = sun.p_body:getPosition()
@@ -96,8 +98,8 @@ function love.draw()
             love.graphics.circle("line", sun_body_x, sun_body_y, sun_body_radius);
 
             --Draw physics
-            local p1_body_x, p1_body_y = sun.p_body:getPosition()
-            local p1_body_radius = sun.p_shape:getRadius()
+            local p1_body_x, p1_body_y = planet_1.p_body:getPosition()
+            local p1_body_radius = planet_1.p_shape:getRadius()
             love.graphics.circle("line", p1_body_x, p1_body_y, p1_body_radius);
       else
             love.graphics.draw(sun.g_texture, sun.x - sun.g_w / 2, sun.y - sun.g_h / 2)
