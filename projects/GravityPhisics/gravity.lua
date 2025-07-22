@@ -68,8 +68,6 @@ Gravity.drawFieldGrid = function(gridW, gridH, cellSize, body, body2)
     for j = 0, gridH, 1 do
       local loc_x, loc_y = gridStartPx_X + cellSize * i, gridStartPx_Y + cellSize * j
       -- love.graphics.rectangle("line",loc_x,loc_y, cellSize, cellSize)
-
-
       --local force, angle = Gravity:localInfluence(loc_x, loc_y, bodyX, bodyY, 1000)
       --local force1, angle1 = Gravity:localInfluence(loc_x, loc_y, body2x, body2Y, 500)
 
@@ -92,20 +90,7 @@ Gravity.drawFieldGrid = function(gridW, gridH, cellSize, body, body2)
 
       local r,g,b,a = love.graphics.getColor()
 
-      
-
-      if math.abs(force) < 0.01 then
-        love.graphics.setColor(0,1,0,1)
-      else
-        if force < 0 then
-          love.graphics.setColor(0,0.5,0.5,1)
-        end
-        if force > 0.01 then
-          love.graphics.setColor(0.5,0,0.5,1)
-        end
-      
-      end
-      
+          
 
       -- love.graphics.push()
       -- love.graphics.translate(loc_x, loc_y);
@@ -114,9 +99,9 @@ Gravity.drawFieldGrid = function(gridW, gridH, cellSize, body, body2)
       -- love.graphics.circle("fill", 0, 0, 4);
       -- love.graphics.pop()
 
-      love.graphics.print(string.format("x:%.3f\ny:%.3f", force_x, force_y), loc_x, loc_y)
+      --love.graphics.print(string.format("x:%.3f\ny:%.3f", force_x, force_y), loc_x, loc_y)
       --love.graphics.print(string.format("(%d,%d)", loc_x, loc_y), loc_x, loc_y)
-      --love.graphics.print(string.format("%.3f", force), loc_x, loc_y)
+      love.graphics.print(string.format("%.3f", force), loc_x, loc_y)
       --love.graphics.print(string.format("%.3f", angle), loc_x, loc_y + 15)
       --love.graphics.print(string.format("%.3f", angle1), loc_x, loc_y + 25)
       love.graphics.setColor(r,g,b,a)

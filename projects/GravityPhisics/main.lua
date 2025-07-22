@@ -14,9 +14,44 @@ local sun = CelBody:new()
 local planet_1 = CelBody:new()
 
 local theta = 0
+Shader = nil
+
+local gravity_shader = [[
+      extern vec2 body_pos;
+      extern vec2 body2_pos;
+      extern vec4 g_color[2]; 
+
+      vec4 effect( vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords )
+      {
+
+          number distance = sqrt(  pow( abs( ( body_pos[0] - screen_coords[0] ) ) ,2) + pow( abs( ( body_pos[1] - (screen_coords[1]) ) ) , 2 ) );
+          number force = 6674 / pow(distance, 2) ;
+
+          number distance2 = sqrt(  pow( abs( ( body2_pos[0] - screen_coords[0] ) ) ,2) + pow( abs( ( body2_pos[1] - (screen_coords[1]) ) ) , 2 ) );
+          number force2 = 6674 / pow(distance2, 2);
+ 
+          force = force - force2;
+
+      // local Force = self.G * mass / (distance ^ 2)
+
+            vec4 texturecolor = Texel(texture, texture_coords);
+            if(force > 0.008) {
+                  return texturecolor * g_color[0] * 1.5;
+            }
+            if(force < -0.04 ) {
+                  return texturecolor * g_color[1] * 1.5;
+            }
+            return texturecolor * color;
+      }
+]]
+
+
 
 function love.load()
       -- Initialize game
+
+      Shader = love.graphics.newShader(gravity_shader)
+      
 
       local sun_x = love.graphics.getWidth() / 2
       local sun_y = love.graphics.getHeight() / 2
@@ -43,6 +78,9 @@ function love.load()
             p1_texture,
             p1_body,
             p1_shape)
+
+      Shader:send( "body_pos" , { sun_x, sun_y } )
+      Shader:sendColor( "g_color", {0.84, 0.87, 0.16,1}, {0.125, 0.737, 0.851,1})
 end
 
 ---
@@ -85,11 +123,21 @@ function love.update(dt)
       theta = theta + (math.pi / 20 * dt)
       local p1_x, p1_y = GetElipticalOrbitCoordinate(sun.x, sun.y, theta, 600, 400)
       planet_1:updatePosition(p1_x, p1_y)
+       Shader:send( "body2_pos" , { p1_x, p1_y } )
 end
 
 function love.draw()
+      
+
+
+      love.graphics.setShader(Shader)
+      love.graphics.rectangle("fill",0,0,love.graphics:getWidth(), love.graphics:getHeight())
       -- Draw game
+
+      love.graphics.setShader()
+            love.graphics.setColor(0,0,0,1)
       gravity.drawFieldGrid(40, 24, 50, sun, planet_1)
+      love.graphics.setColor(1,1,1,1)
       love.graphics.print(string.format("sun %d,%d", sun.x,sun.y), 100, 10)
       if printPhysics then
             --Draw physics
@@ -105,6 +153,13 @@ function love.draw()
             love.graphics.draw(sun.g_texture, sun.x - sun.g_w / 2, sun.y - sun.g_h / 2)
             love.graphics.draw(planet_1.g_texture, planet_1.x - planet_1.g_w / 2, planet_1.y - planet_1.g_h / 2)
       end
+      -- draw fps
+      love.graphics.setColor(0,0,0,1)
+      love.graphics.rectangle("fill",0,0,80,40)
+      love.graphics.setColor(1,1,1,1)
+      love.graphics.print(string.format("FPS: %d", love.timer.getFPS()), 10, 10)
+
+
 end
 
 function love.keypressed(key, scancode, isrepeat)
